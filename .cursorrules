@@ -1,0 +1,98 @@
+Project Name: DeFi Detector
+
+Overview
+
+The DeFi Detector is an AI-powered tool designed to audit decentralized finance (DeFi) projects, starting with token-level analysis for "degens" and scaling to broader protocol-level audits. The tool will provide users with insights into risks (e.g., rug pulls, honeypots), tokenomics analysis, and social media sentiment, while also generating viral memes to engage the community. This project leverages ElizaOS for multi-platform user interaction (Telegram, Discord, Twitter) and integrates Atoma for secure, decentralized AI execution.
+
+Technologies Used
+
+Frontend: Next.js (for server-side rendering and static site generation), TypeScript (for type safety), Tailwind CSS (for utility-first CSS), Shadcn (for UI components), React Bits (for animated and interactive components)
+Backend: Supabase (for backend services including database, authentication, and real-time capabilities)
+AI and Data Processing: Rust and Python (for future extensions and custom data processing tasks)
+Libraries: React Bits (for high-quality animated and interactive React components)
+Objective
+
+The primary objective of DeFi Detector is to:
+
+Provide crypto enthusiasts with a simple, fun, and reliable tool to audit tokens and assess risks.
+Lay the groundwork for a scalable platform that can audit entire DeFi protocols (e.g., smart contracts, liquidity pools).
+Engage the community through gamification (e.g., meme generation) and incentivization (e.g., SUI NFT Badges). For example, users could type /audit $BOBO in Telegram or Discord to receive a detailed risk assessment and a viral meme about the token.
+Context
+
+The DeFi Detector addresses key challenges in the DeFi space:
+
+Lack of transparency and trust in new tokens and protocols.
+High prevalence of scams (e.g., rug pulls, honeypots) targeting retail investors.
+Growing demand for tools that simplify complex blockchain data and make it accessible to non-technical users.
+By combining AI-driven analysis with decentralized compute and multi-platform connectors, DeFi Detector positions itself as a unique and valuable tool in the DeFi ecosystem.
+
+Assumptions
+
+Users are familiar with basic blockchain concepts (e.g., tokens, liquidity pools).
+External APIs like CoinGecko and SUI Blockchain Scanner will provide reliable data.
+The integration of ElizaOS and Atoma will not introduce significant technical hurdles.
+Scope
+
+In Scope
+
+Token Audits: Analyze tokenomics, check for red flags (e.g., mintable supply, liquidity locks), and assess social media hype.
+Meme Generation: Create viral memes based on token sentiment and social media mentions.
+User Interaction: Support commands like /audit $BOBO and /meme $BOBO via Telegram, Discord, and Twitter.
+SUI NFT Badges: Reward users with "Degen Detective" NFTs for interacting with the bot.
+Out of Scope
+
+Full-scale auditing of DeFi protocols (e.g., smart contracts, governance mechanisms).
+Real-time monitoring of blockchain activity.
+Requirements
+
+Functional Requirements
+
+Token Audits:
+
+Fetch live price/volume data from CoinGecko API.
+Extract contract code from SUI Blockchain Scanner.
+Analyze tokenomics (e.g., liquidity pool locks, mintable supply).
+Identify red flags (e.g., rug pulls, honeypots) using AI models.
+Meme Generation:
+
+Scrape social media mentions (Twitter/Reddit) to gauge sentiment.
+Use GPT-4 to generate viral memes based on sentiment and token data.
+User Interaction:
+
+Integrate ElizaOS connectors for Telegram, Discord, and Twitter.
+Support commands like /audit $BOBO and /meme $BOBO.
+NFT Badges:
+
+Mint "Degen Detective" NFTs for users who interact with the bot.
+Non-Functional Requirements
+
+Performance: Ensure low latency for token audits and meme generation.
+Scalability: Design the system to handle increased usage as the user base grows.
+Privacy: Use Atoma’s Trusted Execution Environments (TEEs) to ensure secure and private computations.
+Open Questions
+
+Should the bot support additional blockchains beyond SUI?
+How will the bot handle edge cases (e.g., tokens with no social media presence)?
+Should the meme generation feature be optional or mandatory?
+Goals and Release Criteria
+
+Goals
+
+Deliver a functional MVP for token audits and meme generation by the end of the hackathon.
+Build a community of early adopters through Telegram, Discord, and Twitter.
+Position DeFi Detector as a scalable platform for auditing DeFi projects.
+Release Criteria
+
+MVP: Token audits, meme generation, and user interaction via Telegram/Discord.
+Future Releases: Expand to DeFi protocol audits. Add support for additional blockchains. Introduce real-time monitoring and alerts.
+Background and Strategic Fit
+
+The DeFi Detector aligns with the growing need for transparency and security in the DeFi space. By starting with a niche audience ("degens") and expanding to broader use cases, the project demonstrates both immediate value and long-term potential.
+
+Next Steps
+
+Finalize the integration of ElizaOS and Atoma.
+Develop scripts for token audits and meme generation.
+Test the bot on Telegram and Discord to gather feedback.
+Prepare a pitch deck highlighting the MVP and roadmap.
+This detailed PRD provides a comprehensive overview of the DeFi Detector project, including the technologies used, objectives, requirements, and next steps.

@@ -1,0 +1,6 @@
+mkdir -p src/services/api 
+npm install axios 
+npm install @mysten/sui 
+mkdir -p src/services/auditToken
+mv src/actions/auditToken.ts src/services/auditToken/index.ts 
+npm install zod @upstash/redis 
