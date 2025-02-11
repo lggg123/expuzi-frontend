@@ -22,6 +22,7 @@ export default function Home() {
   const [tokenAddress, setTokenAddress] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState<string | null>(null);
 
   const handleAnalyze = async () => {
     if (!tokenAddress) return;
@@ -30,17 +31,9 @@ export default function Home() {
     setError(null);
     
     try {
-      const response = await fetch('/api/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ address: tokenAddress }),
-      });
-      
-      if (!response.ok) throw new Error('Analysis failed');
-      
-      const data = await response.json();
-      // Handle successful analysis
-      console.log(data);
+      // Simulate analysis with timeout
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setResult(`Analysis complete for ${tokenAddress}`);
       
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to analyze token');
@@ -67,6 +60,35 @@ export default function Home() {
         </Button>
       </div>
 
+      {/* Analysis Section */}
+      <div className="w-full px-4 py-16 text-center text-white bg-gradient-to-r from-purple-900 to-pink-900">
+        <h2 className="text-3xl font-bold mb-4">Start Analyzing</h2>
+        <p className="mb-8 text-gray-300">Enter any SUI token address to get started</p>
+        
+        <div className="flex flex-col items-center gap-4 max-w-md mx-auto">
+          <div className="flex gap-4 w-full">
+            <input
+              type="text"
+              value={tokenAddress}
+              onChange={(e) => setTokenAddress(e.target.value)}
+              placeholder="Token Address"
+              className="w-full px-6 py-3 rounded-lg bg-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            />
+            <Button 
+              variant="default" 
+              className="bg-purple-600 hover:bg-purple-700"
+              onClick={handleAnalyze}
+              disabled={isAnalyzing || !tokenAddress}
+            >
+              {isAnalyzing ? 'Analyzing...' : 'Analyze'}
+            </Button>
+          </div>
+          
+          {error && <p className="text-red-400 text-sm">{error}</p>}
+          {result && <p className="text-green-400 text-sm">{result}</p>}
+        </div>
+      </div>
+
       {/* Features Grid */}
       <div className="w-full max-w-6xl px-4 py-16 grid grid-cols-1 md:grid-cols-3 gap-8">
         <FeatureCard
@@ -84,36 +106,6 @@ export default function Home() {
           description="AI-powered analysis of market trends and sentiment"
           icon="📊"
         />
-      </div>
-
-      {/* CTA Section */}
-      <div className="w-full px-4 py-16 text-center text-white bg-gradient-to-r from-purple-900 to-pink-900">
-        <h2 className="text-3xl font-bold mb-4">Start Analyzing</h2>
-        <p className="mb-8 text-gray-300">
-          Enter any SUI token address to get started
-        </p>
-        <div className="flex flex-col items-center gap-4">
-          <div className="flex gap-4 w-full max-w-md">
-            <input
-              type="text"
-              value={tokenAddress}
-              onChange={(e) => setTokenAddress(e.target.value)}
-              placeholder="Token Address"
-              className="w-full px-6 py-3 rounded-lg bg-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
-            />
-            <Button 
-              variant="default" 
-              className="bg-purple-600 hover:bg-purple-700"
-              onClick={handleAnalyze}
-              disabled={isAnalyzing || !tokenAddress}
-            >
-              {isAnalyzing ? 'Analyzing...' : 'Analyze'}
-            </Button>
-          </div>
-          {error && (
-            <p className="text-red-400 text-sm">{error}</p>
-          )}
-        </div>
       </div>
     </main>
   );
